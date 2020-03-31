@@ -1,8 +1,10 @@
-package com.example.dtmovie;
+package com.example.dtmovie.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.dtmovie.R;
 
 public class MainActivity extends AppCompatActivity {
 

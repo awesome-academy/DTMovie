@@ -45,7 +45,6 @@ public abstract class BaseFragment<VB extends ViewDataBinding,
     @LayoutRes
     protected abstract int getLayoutResource();
 
-
     protected abstract VM getViewModel();
 
     public VB getViewDataBinding() {

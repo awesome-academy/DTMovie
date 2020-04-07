@@ -1,10 +1,10 @@
-package com.example.dtmovie.ui.favorite;
+package com.example.dtmovie.ui.option;
 
 import com.example.dtmovie.R;
 import com.example.dtmovie.base.BaseFragment;
 import com.example.dtmovie.base.BaseViewModel;
 
-public class FavoriteFragment extends BaseFragment {
+public class OptionsFragment extends BaseFragment {
     @Override
     protected int getVaribale() {
         return 0;
@@ -12,7 +12,7 @@ public class FavoriteFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResource() {
-        return R.layout.fragment_favorive;
+        return R.layout.fragment_options;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class FavoriteFragment extends BaseFragment {
         return null;
     }
 
-    public static FavoriteFragment getInstance() {
-        return new FavoriteFragment();
+    public static OptionsFragment getInstance() {
+        return new OptionsFragment();
     }
 }

@@ -9,6 +9,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RequestApi {
-    @GET("movie/{category}?api_key=" + BuildConfig.API_KEY)
+    @GET("movie/{category}")
     Observable<MovieReponse> getMovieByCategory(@Path("category") String category, @Query("page") int page);
 }

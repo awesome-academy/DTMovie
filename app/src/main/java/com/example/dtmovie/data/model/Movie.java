@@ -14,7 +14,7 @@ public class Movie {
     private String mTitle;
 
     @SerializedName("vote_average")
-    private int mVoteAverAge;
+    private double mVoteAverAge;
 
     @SerializedName("overview")
     private String mOverView;
@@ -25,7 +25,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(int id, String backdropPath, String title, int voteAverAge, String overView, String releaseData) {
+    public Movie(int id, String backdropPath, String title, double voteAverAge, String overView, String releaseData) {
         mId = id;
         mBackdropPath = backdropPath;
         mTitle = title;
@@ -58,11 +58,11 @@ public class Movie {
         mTitle = title;
     }
 
-    public int getVoteAverAge() {
+    public double getVoteAverAge() {
         return mVoteAverAge;
     }
 
-    public void setVoteAverAge(int voteAverAge) {
+    public void setVoteAverAge(double voteAverAge) {
         mVoteAverAge = voteAverAge;
     }
 

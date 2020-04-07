@@ -30,4 +30,8 @@ public class HomeFragment extends BaseFragment {
         mViewModel.initViewModel(getContext());
         return mViewModel;
     }
+
+    public static HomeFragment getInstance() {
+        return new HomeFragment();
+    }
 }

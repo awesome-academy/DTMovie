@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class HomeViewModel extends BaseViewModel {
-    private MovieReponsitory mMovieReponsitory;
+    public static final int PAGE_DEFAULT = 1;
     private CompositeDisposable mDisposable;
     private MovieReponsitory mReponsitory;
     private ObservableList<Movie> mMovieObservableList = new ObservableArrayList<>();
@@ -35,15 +35,15 @@ public class HomeViewModel extends BaseViewModel {
     }
 
     private void loadTopRate() {
-        Disposable disposable = mReponsitory.getMoviesByCategory("now_playing", 1)
+        Disposable disposable = mReponsitory.getMoviesByCategory("now_playing", PAGE_DEFAULT)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
                 .subscribe(movieReponse -> {
                     mMovieObservableList.addAll(movieReponse.getMovies());
-                    Toast.makeText(mContext, "" + mMovieObservableList.size(), Toast.LENGTH_SHORT).show();
                 }, throwable -> handeError(throwable.getMessage()));
         mDisposable.add(disposable);
     }
 
     private void handeError(String message) {
+        Toast.makeText(mContext, "" + message, Toast.LENGTH_SHORT).show();
     }
 }

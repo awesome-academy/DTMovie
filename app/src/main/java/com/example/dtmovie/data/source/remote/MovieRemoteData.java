@@ -28,4 +28,9 @@ public class MovieRemoteData implements MovieDataSource.remote {
     public Observable<MovieReponse> getMoviesByCategory(String category, int page) {
         return mApi.getMovieByCategory(category, page);
     }
+
+    @Override
+    public Observable<MovieReponse> getMovieTrending() {
+        return mApi.getMovieTrending();
+    }
 }

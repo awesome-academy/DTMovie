@@ -25,4 +25,9 @@ public class MovieReponsitory implements MovieDataSource.remote {
     public Observable<MovieReponse> getMoviesByCategory(String category, int page) {
         return mMovieRemoteData.getMoviesByCategory(category, page);
     }
+
+    @Override
+    public Observable<MovieReponse> getMovieTrending() {
+        return mMovieRemoteData.getMovieTrending();
+    }
 }

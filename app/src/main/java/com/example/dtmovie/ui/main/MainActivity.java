@@ -38,8 +38,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setOffscreenPageLimit(IntViewPager.SET_OFF_SCREEN_LIMIT);
         mViewPager.addOnPageChangeListener(this);
-        mViewPager.setCurrentItem(R.id.menu_home);
-        mBottomNavigationView.setSelectedItemId(IntViewPager.FRAGMENT_HOME);
+        mViewPager.setCurrentItem(IntViewPager.FRAGMENT_HOME);
     }
 
     private void initComponents() {
@@ -94,6 +93,5 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public void onPageScrollStateChanged(int state) {
-
     }
 }

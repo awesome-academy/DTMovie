@@ -44,7 +44,7 @@ public class MovieTrendingAdapter extends PagerAdapter implements View.OnClickLi
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        mBinding = DataBindingUtil.inflate(mLayoutInflater, R.layout.item_movie_trending, container, false);
+        mBinding = DataBindingUtil.inflate(mLayoutInflater, R.layout.item_movie_trending, container, true);
         if (mBinding.getViewModel() == null) {
             mBinding.setViewModel(new ItemMovieViewModel());
         }

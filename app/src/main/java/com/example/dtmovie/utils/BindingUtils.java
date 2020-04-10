@@ -20,7 +20,7 @@ public class BindingUtils {
     @BindingAdapter("setImage")
     public static void setImage(ImageView imageView, String url) {
         Glide.with(imageView.getContext())
-                .load(StringUtils.getImage(url)).centerCrop().fallback(R.drawable.giphy)
+                .load(StringUtils.getImageUrl(url)).centerCrop().fallback(R.drawable.giphy)
                 .error(R.drawable.no_image)
                 .into(imageView);
     }

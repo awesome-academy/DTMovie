@@ -8,7 +8,8 @@
     <dimen name="sp_16">16sp</dimen>
     <dimen name="x5dp">5dp</dimen>
     <dimen name="x2dp">2dp</dimen>
-    <dimen name="x4dp">4dp</dimen>
     <dimen name="x12dp">12dp</dimen>
     <dimen name="x8dp">8dp</dimen>
+    <dimen name="x30dp">30dp</dimen>
+    <dimen name="x4dp">4dp</dimen>
 </resources>

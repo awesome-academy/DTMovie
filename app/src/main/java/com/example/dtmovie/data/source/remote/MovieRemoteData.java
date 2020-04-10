@@ -9,7 +9,7 @@ import com.example.dtmovie.data.source.MovieDataSource;
 
 import io.reactivex.Observable;
 
-public class MovieRemoteData implements MovieDataSource.remote {
+public class MovieRemoteData implements MovieDataSource.Remote {
     private static MovieRemoteData sMovieRemoteData;
     private RequestApi mApi;
 
@@ -30,7 +30,7 @@ public class MovieRemoteData implements MovieDataSource.remote {
     }
 
     @Override
-    public Observable<MovieReponse> getMovieTrending() {
-        return mApi.getMovieTrending();
+    public Observable<MovieReponse> getTrendingMovie() {
+        return mApi.getTrendingMovie();
     }
 }

@@ -12,6 +12,6 @@ public interface RequestApi {
     Observable<MovieReponse> getMovieByCategory(@Path("category") String category, @Query("page") int page);
 
     @GET("trending/all/day")
-    Observable<MovieReponse> getMovieTrending();
+    Observable<MovieReponse> getTrendingMovie();
 
 }

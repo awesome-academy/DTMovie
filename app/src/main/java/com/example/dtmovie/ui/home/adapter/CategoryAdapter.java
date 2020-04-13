@@ -8,9 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableList;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dtmovie.R;
+import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.data.model.MovieCategory;
 import com.example.dtmovie.databinding.ItemCategoryMovieBinding;
 import com.example.dtmovie.ui.home.ItemCategoryViewModel;
@@ -71,6 +74,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             mMovieCategory = movieCategory;
             mViewModel = new ItemCategoryViewModel(mContext, mMovieCategory);
             mBindingCategory.setViewModel(mViewModel);
+            mViewModel.getMovie(movieCategory).observe((LifecycleOwner) mContext, new Observer<List<Movie>>() {
+                @Override
+                public void onChanged(List<Movie> movies) {
+                    mMovieAdapter.update(movies);
+                }
+            });
             mViewModel.mCategoryMovieObservableField.set(movieCategory);
             mViewModel.setItemListCategoryBinding(movieCategory);
             mBindingCategory.executePendingBindings();

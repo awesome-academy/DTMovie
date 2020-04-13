@@ -6,14 +6,18 @@ import android.widget.Toast;
 import androidx.databinding.ObservableArrayList;
 import androidx.databinding.ObservableField;
 import androidx.databinding.ObservableList;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.dtmovie.base.BaseViewModel;
-import com.example.dtmovie.data.model.MovieCategory;
 import com.example.dtmovie.data.model.Movie;
+import com.example.dtmovie.data.model.MovieCategory;
 import com.example.dtmovie.data.responsitory.MovieReponsitory;
 import com.example.dtmovie.data.source.local.MovieLocalData;
 import com.example.dtmovie.data.source.remote.MovieRemoteData;
 import com.example.dtmovie.ui.home.adapter.MovieAdapter;
+
+import java.util.List;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
@@ -25,17 +29,26 @@ public class ItemCategoryViewModel extends BaseViewModel {
     public final ObservableField<MovieCategory>
             mCategoryMovieObservableField = new ObservableField<>();
     private ObservableList<Movie> mMovies = new ObservableArrayList<>();
-    private MovieAdapter mMovieAdapter;
+    private MutableLiveData<List<Movie>> mMovie;
     private Context mContext;
     private CompositeDisposable mDisposable;
     private MovieReponsitory mReponsitory;
+    private MovieAdapter mMovieAdapter;
 
     public ItemCategoryViewModel(Context context, MovieCategory movieCategory) {
         mContext = context;
         mDisposable = new CompositeDisposable();
         mReponsitory = MovieReponsitory.
                 getInstance(MovieRemoteData.getInstance(context), new MovieLocalData());
-        loadMovies(movieCategory);
+        //loadMovies(movieCategory);
+    }
+
+    public LiveData<List<Movie>> getMovie(MovieCategory category) {
+        if (mMovie == null) {
+            mMovie = new MutableLiveData<>();
+            loadMovies(category);
+        }
+        return mMovie;
     }
 
     private void loadMovies(MovieCategory movieCategory) {
@@ -45,13 +58,13 @@ public class ItemCategoryViewModel extends BaseViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(movieReponse -> {
                     mMovies.addAll(movieReponse.getMovies());
-                    mMovieAdapter.update(movieReponse.getMovies());
+                    mMovie.setValue(movieReponse.getMovies());
                 }, throwable -> handlerError(throwable.getMessage()));
         mDisposable.add(disposable);
     }
 
     private void handlerError(String message) {
-        Toast.makeText(mContext,  message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext, message.toString(), Toast.LENGTH_SHORT).show();
     }
 
     public void setItemListCategoryBinding(MovieCategory movieCategory) {

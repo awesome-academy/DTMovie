@@ -1,38 +1,18 @@
 package com.example.dtmovie.ui.home;
 
 import androidx.databinding.ObservableField;
-import androidx.lifecycle.ViewModel;
 
+import com.example.dtmovie.base.BaseViewModel;
 import com.example.dtmovie.data.model.Movie;
-import com.example.dtmovie.ui.home.adapter.MovieAdapter;
 
-public class ItemMovieViewModel extends ViewModel {
-    private Movie mMovie;
+public class ItemMovieViewModel extends BaseViewModel {
+    public ObservableField<Movie> mMovies = new ObservableField<>();
 
-    public ItemMovieViewModel() {
+    public void setItemListNewsBiding(Movie movie) {
+        mMovies.set(movie);
     }
 
-    public Movie getMovie() {
-        return mMovie;
-    }
-
-    public void setMovie(Movie movie) {
-        mMovie = movie;
-    }
-
-    public String getTitle() {
-        return mMovie.getTitle();
-    }
-
-    public String getBackdropPath() {
-        return mMovie.getBackdropPath();
-    }
-
-    public String getReleaseDate() {
-        return mMovie.getReleaseData();
-    }
-
-    public double getVoteAverage() {
-        return mMovie.getVoteAverAge();
+    public Movie getNews() {
+        return mMovies.get();
     }
 }

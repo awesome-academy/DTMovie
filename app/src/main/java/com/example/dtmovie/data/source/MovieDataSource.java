@@ -1,5 +1,6 @@
 package com.example.dtmovie.data.source;
 
+import com.example.dtmovie.data.model.GenresReponse;
 import com.example.dtmovie.data.model.MovieCategory;
 import com.example.dtmovie.data.model.MovieReponse;
 
@@ -12,6 +13,8 @@ public interface MovieDataSource {
         Observable<MovieReponse> getMoviesByCategory(String category, int page);
 
         Observable<MovieReponse> getTrendingMovie();
+
+        Observable<GenresReponse> getMovieGenres();
     }
 
     interface Local {

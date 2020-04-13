@@ -2,6 +2,7 @@ package com.example.dtmovie.data.source.remote;
 
 import android.content.Context;
 
+import com.example.dtmovie.data.model.GenresReponse;
 import com.example.dtmovie.data.model.MovieReponse;
 import com.example.dtmovie.data.service.NetworkService;
 import com.example.dtmovie.data.service.RequestApi;
@@ -32,5 +33,10 @@ public class MovieRemoteData implements MovieDataSource.Remote {
     @Override
     public Observable<MovieReponse> getTrendingMovie() {
         return mApi.getTrendingMovie();
+    }
+
+    @Override
+    public Observable<GenresReponse> getMovieGenres() {
+        return mApi.getGenresMovie();
     }
 }

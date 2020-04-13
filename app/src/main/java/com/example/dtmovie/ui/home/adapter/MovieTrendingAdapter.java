@@ -14,7 +14,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import com.example.dtmovie.R;
 import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.databinding.ItemMovieTrendingBinding;
-import com.example.dtmovie.ui.home.ItemMovieViewModel;
+import com.example.dtmovie.ui.home.ItemTrendingMovieViewModel;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class MovieTrendingAdapter extends PagerAdapter implements View.OnClickLi
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         mBinding = DataBindingUtil.inflate(mLayoutInflater, R.layout.item_movie_trending, container, true);
         if (mBinding.getViewModel() == null) {
-            mBinding.setViewModel(new ItemMovieViewModel());
+            mBinding.setViewModel(new ItemTrendingMovieViewModel());
         }
         mBinding.getViewModel().setMovie(mMovies.get(position));
         mCurrent = position;

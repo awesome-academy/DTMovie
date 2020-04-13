@@ -13,19 +13,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/image_action"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x2dp"
+            android:src="@drawable/ic_device_hub_black_24dp" />
+
         <TextView
             android:id="@+id/text_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x4dp"
+            android:layout_toRightOf="@id/image_action"
             android:text="@{viewModel.mCategoryMovieObservableField.categoryTitle}"
-            android:textSize="@dimen/sp_20" />
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_movie"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/x200dp"
             android:layout_below="@id/text_category"
+            android:layout_marginTop="@dimen/x4dp"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x4dp"
+            android:layout_below="@id/recycler_movie"
+            android:layout_marginTop="@dimen/x2dp"
+            android:background="@color/color_white" />
     </RelativeLayout>
 </layout>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -12,9 +13,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
-            setImage="@{viewModel.movie.backdropPath}"
-            android:layout_width="@dimen/x200dp"
-            android:layout_height="@dimen/x200dp" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="@dimen/x120dp"
+            android:layout_height="@dimen/x170dp"
+            android:layout_marginRight="@dimen/x6dp"
+            app:cardCornerRadius="@dimen/x6dp"
+            app:cardElevation="@dimen/x6dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_movie"
+                    setImage300="@{viewModel.mMovies.backdropPath}"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="@dimen/x120dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_view"
+            android:gravity="center"
+            android:lines="2"
+            android:text="@{viewModel.mMovies.title}"
+            android:textSize="@dimen/x12sp" />
     </RelativeLayout>
+
 </layout>

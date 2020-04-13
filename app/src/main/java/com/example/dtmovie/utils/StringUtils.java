@@ -12,4 +12,8 @@ public class StringUtils {
                 .append(Constant.IMAGE_SIZE_W500)
                 .append(image_path).toString();
     }
+
+    public static String getImage300Url(String image_path) {
+        return String.format("%s%s%s", Constant.BASE_IMAGE_PATH, Constant.IMAGE_SIZE_W300, image_path);
+    }
 }

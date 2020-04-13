@@ -24,4 +24,10 @@ public class BindingUtils {
                 .error(R.drawable.no_image)
                 .into(imageView);
     }
+
+    @BindingAdapter("setImage300")
+    public static void setImage300(ImageView imageView, String url) {
+        Glide.with(imageView.getContext()).load(StringUtils.getImage300Url(url)).centerCrop()
+                .fallback(R.drawable.giphy).error(R.drawable.no_image).into(imageView);
+    }
 }

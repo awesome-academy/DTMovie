@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.dtmovie.ui.home.ItemMovieViewModel" />
+            type="com.example.dtmovie.ui.home.ItemTrendingMovieViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

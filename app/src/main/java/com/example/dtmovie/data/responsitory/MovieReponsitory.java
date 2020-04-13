@@ -1,5 +1,6 @@
 package com.example.dtmovie.data.responsitory;
 
+import com.example.dtmovie.data.model.GenresReponse;
 import com.example.dtmovie.data.model.MovieCategory;
 import com.example.dtmovie.data.model.MovieReponse;
 import com.example.dtmovie.data.source.MovieDataSource;
@@ -36,6 +37,11 @@ public class MovieReponsitory implements MovieDataSource.Remote, MovieDataSource
     @Override
     public Observable<MovieReponse> getTrendingMovie() {
         return mMovieRemoteData.getTrendingMovie();
+    }
+
+    @Override
+    public Observable<GenresReponse> getMovieGenres() {
+        return mMovieRemoteData.getMovieGenres();
     }
 
     @Override

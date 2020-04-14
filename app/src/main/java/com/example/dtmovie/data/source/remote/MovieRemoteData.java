@@ -2,9 +2,9 @@ package com.example.dtmovie.data.source.remote;
 
 import android.content.Context;
 
-import com.example.dtmovie.data.model.GenresReponse;
+import com.example.dtmovie.data.reponse.GenresReponse;
 import com.example.dtmovie.data.model.Movie;
-import com.example.dtmovie.data.model.MovieReponse;
+import com.example.dtmovie.data.reponse.MovieReponse;
 import com.example.dtmovie.data.service.NetworkService;
 import com.example.dtmovie.data.service.RequestApi;
 import com.example.dtmovie.data.source.MovieDataSource;

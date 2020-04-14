@@ -1,5 +1,6 @@
-package com.example.dtmovie.data.model;
+package com.example.dtmovie.data.result;
 
+import com.example.dtmovie.data.model.Actor;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;

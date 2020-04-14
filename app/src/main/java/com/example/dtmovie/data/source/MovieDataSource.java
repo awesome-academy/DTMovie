@@ -1,9 +1,9 @@
 package com.example.dtmovie.data.source;
 
-import com.example.dtmovie.data.model.GenresReponse;
+import com.example.dtmovie.data.reponse.GenresReponse;
 import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.data.model.MovieCategory;
-import com.example.dtmovie.data.model.MovieReponse;
+import com.example.dtmovie.data.reponse.MovieReponse;
 
 import java.util.List;
 

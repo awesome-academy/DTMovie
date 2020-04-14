@@ -1,4 +1,4 @@
-package com.example.dtmovie.ui.movie_details.infor;
+package com.example.dtmovie.ui.movie_details.similar;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,25 +11,33 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.example.dtmovie.R;
-import com.example.dtmovie.databinding.FragmentMovieInforBinding;
+import com.example.dtmovie.databinding.FragmentSimilarBinding;
 import com.example.dtmovie.ui.movie_details.MovieDetailViewModel;
 
-public class MovieInforFragment extends Fragment {
-    private FragmentMovieInforBinding mBinding;
+public class SimilarFragment extends Fragment {
+    private FragmentSimilarBinding mBinding;
     private MovieDetailViewModel mViewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater
             , @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mBinding = DataBindingUtil.inflate(inflater
-                , R.layout.fragment_movie_infor, container, false);
+        mBinding = DataBindingUtil
+                .inflate(inflater, R.layout.fragment_similar, container, false);
         mBinding.setViewModel(mViewModel);
         return mBinding.getRoot();
     }
 
-    public static MovieInforFragment getInstance() {
-        return new MovieInforFragment();
+    public static SimilarFragment getInstance() {
+        return new SimilarFragment();
+    }
+
+    public FragmentSimilarBinding getBinding() {
+        return mBinding;
+    }
+
+    public void setBinding(FragmentSimilarBinding binding) {
+        mBinding = binding;
     }
 
     public MovieDetailViewModel getViewModel() {

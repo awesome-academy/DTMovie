@@ -34,4 +34,8 @@ public abstract class BaseActivity<VB extends ViewDataBinding,
         super.onDestroy();
         mViewModel.onCleared();
     }
+
+    public VB getViewDataBinding() {
+        return mViewDataBinding;
+    }
 }

@@ -21,6 +21,7 @@ import com.example.dtmovie.ui.home.adapter.CategoryAdapter;
 import com.example.dtmovie.ui.home.adapter.GenresAdapter;
 import com.example.dtmovie.ui.home.adapter.MovieTrendingAdapter;
 import com.example.dtmovie.ui.home.adapter.MovieTrendingListener;
+import com.example.dtmovie.ui.movie_details.MovieDetailActivity;
 import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.List;
@@ -160,6 +161,6 @@ public class HomeFragment extends BaseFragment implements MovieTrendingListener 
 
     @Override
     public void onMovieTrendingListener(Movie movie) {
-        Toast.makeText(getContext(), "" + movie.getTitle().toString(), Toast.LENGTH_SHORT).show();
+        startActivity(MovieDetailActivity.getIntent(getContext(), movie));
     }
 }

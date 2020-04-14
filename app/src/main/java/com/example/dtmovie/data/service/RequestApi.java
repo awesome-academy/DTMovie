@@ -1,6 +1,7 @@
 package com.example.dtmovie.data.service;
 
 import com.example.dtmovie.data.model.GenresReponse;
+import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.data.model.MovieReponse;
 
 import io.reactivex.Observable;
@@ -14,7 +15,10 @@ public interface RequestApi {
 
     @GET("trending/all/day")
     Observable<MovieReponse> getTrendingMovie();
+
     @GET("genre/movie/list")
     Observable<GenresReponse> getGenresMovie();
 
+    @GET("movie/{movie_id}?append_to_response=credits,videos")
+    Observable<Movie> getMovieDetail(@Path("movie_id") int id);
 }

@@ -2,7 +2,10 @@ package com.example.dtmovie.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Movie {
+import java.io.Serializable;
+import java.util.List;
+
+public class Movie implements Serializable {
 
     @SerializedName("id")
     private int mId;
@@ -10,8 +13,18 @@ public class Movie {
     @SerializedName("backdrop_path")
     private String mBackdropPath;
 
+    @SerializedName("poster_path")
+    private String mPosterPath;
+
+    @SerializedName("genres")
+    private List<Genres> mGenres;
+
+
     @SerializedName("title")
     private String mTitle;
+
+    @SerializedName("production_companies")
+    private List<Company> mProductionCompanies;
 
     @SerializedName("vote_average")
     private double mVoteAverAge;
@@ -22,16 +35,56 @@ public class Movie {
     @SerializedName("release_date")
     private String mReleaseData;
 
+    @SerializedName("credits")
+    private CastResult mCastResult;
+
+    @SerializedName("videos")
+    private VideoResult mVideoResult;
+
     public Movie() {
     }
 
-    public Movie(int id, String backdropPath, String title, double voteAverAge, String overView, String releaseData) {
+
+    public Movie(int id, String backdropPath, String posterPath
+            , List<Genres> genres, String title
+            , List<Company> productionCompanies, double voteAverAge
+            , String overView, String releaseData
+            , CastResult castResult, VideoResult videoResult) {
         mId = id;
         mBackdropPath = backdropPath;
+        mPosterPath = posterPath;
+        mGenres = genres;
         mTitle = title;
+        mProductionCompanies = productionCompanies;
         mVoteAverAge = voteAverAge;
         mOverView = overView;
         mReleaseData = releaseData;
+        mCastResult = castResult;
+        mVideoResult = videoResult;
+    }
+
+    public List<Genres> getGenres() {
+        return mGenres;
+    }
+
+    public void setGenres(List<Genres> genres) {
+        mGenres = genres;
+    }
+
+    public List<Company> getProductionCompanies() {
+        return mProductionCompanies;
+    }
+
+    public void setProductionCompanies(List<Company> productionCompanies) {
+        mProductionCompanies = productionCompanies;
+    }
+
+    public String getPosterPath() {
+        return mPosterPath;
+    }
+
+    public void setPosterPath(String posterPath) {
+        mPosterPath = posterPath;
     }
 
     public int getId() {
@@ -80,5 +133,21 @@ public class Movie {
 
     public void setReleaseData(String releaseData) {
         mReleaseData = releaseData;
+    }
+
+    public CastResult getCastResult() {
+        return mCastResult;
+    }
+
+    public void setCastResult(CastResult castResult) {
+        mCastResult = castResult;
+    }
+
+    public VideoResult getVideoResult() {
+        return mVideoResult;
+    }
+
+    public void setVideoResult(VideoResult videoResult) {
+        mVideoResult = videoResult;
     }
 }

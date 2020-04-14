@@ -1,8 +1,8 @@
 package com.example.dtmovie.data.service;
 
-import com.example.dtmovie.data.model.GenresReponse;
+import com.example.dtmovie.data.reponse.GenresReponse;
 import com.example.dtmovie.data.model.Movie;
-import com.example.dtmovie.data.model.MovieReponse;
+import com.example.dtmovie.data.reponse.MovieReponse;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
@@ -19,6 +19,6 @@ public interface RequestApi {
     @GET("genre/movie/list")
     Observable<GenresReponse> getGenresMovie();
 
-    @GET("movie/{movie_id}?append_to_response=credits,videos")
+    @GET("movie/{movie_id}?append_to_response=credits,videos,similar")
     Observable<Movie> getMovieDetail(@Path("movie_id") int id);
 }

@@ -44,7 +44,6 @@ public class Movie implements Serializable {
     public Movie() {
     }
 
-
     public Movie(int id, String backdropPath, String posterPath
             , List<Genres> genres, String title
             , List<Company> productionCompanies, double voteAverAge

@@ -1,8 +1,10 @@
 package com.example.dtmovie.ui.home.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -17,8 +19,11 @@ import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.data.model.MovieCategory;
 import com.example.dtmovie.databinding.ItemCategoryMovieBinding;
 import com.example.dtmovie.ui.home.ItemCategoryViewModel;
+import com.example.dtmovie.ui.movie_details.MovieDetailActivity;
 
 import java.util.List;
+
+import static androidx.constraintlayout.widget.Constraints.TAG;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
     private ObservableList<MovieCategory> mMovieCategories;
@@ -55,7 +60,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         return mMovieCategories == null ? 0 : mMovieCategories.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder implements ItemMovieListener {
         private ItemCategoryViewModel mViewModel;
         private ItemCategoryMovieBinding mBindingCategory;
         private MovieCategory mMovieCategory;
@@ -66,6 +71,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             super(binding.getRoot());
             mBindingCategory = binding;
             mMovieAdapter = new MovieAdapter(mContext);
+            mMovieAdapter.setListener(this);
             mBindingCategory.recyclerMovie.setAdapter(mMovieAdapter);
             mBindingCategory.recyclerMovie.hasFixedSize();
         }
@@ -83,6 +89,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             mViewModel.mCategoryMovieObservableField.set(movieCategory);
             mViewModel.setItemListCategoryBinding(movieCategory);
             mBindingCategory.executePendingBindings();
+        }
+
+        @Override
+        public void onItemMovieClick(Movie movie) {
+            mContext.startActivity(MovieDetailActivity.getIntent(mContext, movie));
         }
     }
 }

@@ -11,4 +11,9 @@
     <style name="TransparentStatusTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowTranslucentStatus" tools:targetApi="kitkat">true</item>
     </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlActivated">@color/color_tea</item>
+        <item name="colorControlNormal">@color/color_white_tea</item>
+    </style>
 </resources>

@@ -10,4 +10,7 @@
     <color name="color_teal_50">#009688</color>
     <color name="color_transparent_black">#3C000000</color>
     <color name="color_hide">#AA37474F</color>
+    <color name="color_white_smoke">#E9E9E9</color>
+    <color name="color_tea">#00838f</color>
+    <color name="color_white_tea">#b2ebf2</color>
 </resources>

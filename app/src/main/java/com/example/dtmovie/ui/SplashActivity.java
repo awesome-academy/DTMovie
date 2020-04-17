@@ -22,6 +22,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = MainActivity.getIntent(getApplicationContext());
                 startActivity(intent);
+                finish();
             }
         }, TIME_DELAY);
     }

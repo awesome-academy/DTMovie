@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.dtmovie.R;
 import com.example.dtmovie.databinding.FragmentMovieInforBinding;
+import com.example.dtmovie.ui.home.adapter.GenresAdapter;
 import com.example.dtmovie.ui.movie_details.MovieDetailViewModel;
 
 public class MovieInforFragment extends Fragment {
@@ -25,7 +26,12 @@ public class MovieInforFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater
                 , R.layout.fragment_movie_infor, container, false);
         mBinding.setViewModel(mViewModel);
+        initRecyclerGenres();
         return mBinding.getRoot();
+    }
+
+    private void initRecyclerGenres() {
+        mBinding.recyclerGenres.setAdapter(new GenresAdapter(getContext()));
     }
 
     public static MovieInforFragment getInstance() {

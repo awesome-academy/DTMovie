@@ -14,7 +14,7 @@
         android:theme="@style/Theme.Design.NoActionBar">
         <activity android:name=".ui.main.MainActivity" />
         <activity android:name=".ui.movie_details.MovieDetailActivity" />
-        <activity android:name=".ui.SplashActivity">
+        <activity android:name=".ui.SplashActivity" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

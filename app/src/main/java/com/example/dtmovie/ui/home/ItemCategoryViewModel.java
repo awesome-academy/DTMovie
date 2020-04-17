@@ -28,7 +28,6 @@ public class ItemCategoryViewModel extends BaseViewModel {
     public static final int PAGE_DEFAULT = 1;
     public final ObservableField<MovieCategory>
             mCategoryMovieObservableField = new ObservableField<>();
-    private ObservableList<Movie> mMovies = new ObservableArrayList<>();
     private MutableLiveData<List<Movie>> mMovie;
     private Context mContext;
     private CompositeDisposable mDisposable;
@@ -40,7 +39,6 @@ public class ItemCategoryViewModel extends BaseViewModel {
         mDisposable = new CompositeDisposable();
         mReponsitory = MovieReponsitory.
                 getInstance(MovieRemoteData.getInstance(context), new MovieLocalData());
-        //loadMovies(movieCategory);
     }
 
     public LiveData<List<Movie>> getMovie(MovieCategory category) {
@@ -57,7 +55,6 @@ public class ItemCategoryViewModel extends BaseViewModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(movieReponse -> {
-                    mMovies.addAll(movieReponse.getMovies());
                     mMovie.setValue(movieReponse.getMovies());
                 }, throwable -> handlerError(throwable.getMessage()));
         mDisposable.add(disposable);

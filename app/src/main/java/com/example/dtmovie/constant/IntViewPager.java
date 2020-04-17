@@ -16,5 +16,5 @@ public @interface IntViewPager {
     int FRAGMENT_OPTIONS = 0;
     int FRAGMENT_HOME = 1;
     int FRAGMENT_FAVORITE = 2;
-    int SET_OFF_SCREEN_LIMIT = 3;
+    int SET_OFF_SCREEN_LIMIT = 5;
 }

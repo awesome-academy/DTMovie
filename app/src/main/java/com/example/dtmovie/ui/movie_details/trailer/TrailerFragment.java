@@ -12,12 +12,16 @@ import androidx.fragment.app.Fragment;
 
 import com.example.dtmovie.R;
 import com.example.dtmovie.databinding.FragmentTrailerBinding;
+import com.example.dtmovie.ui.home.adapter.MovieAdapter;
 import com.example.dtmovie.ui.movie_details.MovieDetailViewModel;
+import com.example.dtmovie.ui.movie_details.OnTrailerListener;
+
+import java.util.ArrayList;
 
 public class TrailerFragment extends Fragment {
     private FragmentTrailerBinding mBinding;
     private MovieDetailViewModel mViewModel;
-
+    private OnTrailerListener mListener;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater
@@ -25,7 +29,13 @@ public class TrailerFragment extends Fragment {
         mBinding = DataBindingUtil.inflate(inflater,
                 R.layout.fragment_trailer, container, false);
         mBinding.setViewModel(mViewModel);
+        initRecyclerMovieTrailer();
         return mBinding.getRoot();
+    }
+
+    private void initRecyclerMovieTrailer() {
+        mBinding.recyclerTrailer.setAdapter(new MoiveTrailerAdapter(new ArrayList<>(),
+                getContext(),mListener));
     }
 
     public static TrailerFragment getInstance() {
@@ -46,5 +56,9 @@ public class TrailerFragment extends Fragment {
 
     public void setViewModel(MovieDetailViewModel viewModel) {
         mViewModel = viewModel;
+    }
+
+    public void setListener(OnTrailerListener listener) {
+        mListener = listener;
     }
 }

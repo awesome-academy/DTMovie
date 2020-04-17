@@ -20,22 +20,28 @@ public class MovieDetailViewModel extends BaseViewModel {
     private CompositeDisposable mDisposable;
     private Context mContext;
     private MovieReponsitory mReponsitory;
+    private OnTrailerListener mOnTrailerListener;
     public ObservableField<Movie> mMovies = new ObservableField<>();
 
-    public void initViewModel(Context context, Movie movie) {
+    public void initViewModel(Context context, Movie movie, OnTrailerListener listener) {
+        mOnTrailerListener = listener;
         mDisposable = new CompositeDisposable();
         mReponsitory = MovieReponsitory.
                 getInstance(MovieRemoteData.getInstance(context), new MovieLocalData());
         mContext = context;
-        load(movie);
+        load(movie.getId());
     }
 
-    private void load(Movie movie) {
-        Disposable disposable = mReponsitory.getMovieDetail(movie.getId()).
+    private void load(int id) {
+        Disposable disposable = mReponsitory.getMovieDetail(id).
                 subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(movieReponse -> {
-                    mMovies.set(movieReponse);
+                .subscribe(movie -> {
+                    mMovies.set(movie);
+                    if (!movie.getVideoResult().getVideos().isEmpty()) {
+                        mOnTrailerListener.
+                                onCreateTrailer(movie.getVideoResult().getVideos().get(0).getKey());
+                    }
                 }, throwable -> handlerError(throwable.getMessage()));
         mDisposable.add(disposable);
     }

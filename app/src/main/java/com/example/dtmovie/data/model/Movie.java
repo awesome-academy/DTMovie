@@ -1,5 +1,8 @@
 package com.example.dtmovie.data.model;
 
+import com.example.dtmovie.data.result.CastResult;
+import com.example.dtmovie.data.result.SimilarResult;
+import com.example.dtmovie.data.result.VideoResult;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -18,7 +21,6 @@ public class Movie implements Serializable {
 
     @SerializedName("genres")
     private List<Genres> mGenres;
-
 
     @SerializedName("title")
     private String mTitle;
@@ -41,14 +43,16 @@ public class Movie implements Serializable {
     @SerializedName("videos")
     private VideoResult mVideoResult;
 
+    @SerializedName("similar")
+    private SimilarResult mSimilarResult;
+
     public Movie() {
     }
 
-    public Movie(int id, String backdropPath, String posterPath
-            , List<Genres> genres, String title
-            , List<Company> productionCompanies, double voteAverAge
-            , String overView, String releaseData
-            , CastResult castResult, VideoResult videoResult) {
+    public Movie(int id, String backdropPath, String posterPath,
+                 List<Genres> genres, String title, List<Company> productionCompanies,
+                 double voteAverAge, String overView, String releaseData,
+                 CastResult castResult, VideoResult videoResult, SimilarResult similarResult) {
         mId = id;
         mBackdropPath = backdropPath;
         mPosterPath = posterPath;
@@ -60,6 +64,7 @@ public class Movie implements Serializable {
         mReleaseData = releaseData;
         mCastResult = castResult;
         mVideoResult = videoResult;
+        mSimilarResult = similarResult;
     }
 
     public List<Genres> getGenres() {
@@ -148,5 +153,13 @@ public class Movie implements Serializable {
 
     public void setVideoResult(VideoResult videoResult) {
         mVideoResult = videoResult;
+    }
+
+    public SimilarResult getSimilarResult() {
+        return mSimilarResult;
+    }
+
+    public void setSimilarResult(SimilarResult similarResult) {
+        mSimilarResult = similarResult;
     }
 }

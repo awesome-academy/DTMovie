@@ -1,21 +1,42 @@
 package com.example.dtmovie.ui.movie_details.infor;
 
-import com.example.dtmovie.base.BaseFragment;
-import com.example.dtmovie.base.BaseViewModel;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class MovieInforFragment extends BaseFragment {
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
+import com.example.dtmovie.R;
+import com.example.dtmovie.databinding.FragmentMovieInforBinding;
+import com.example.dtmovie.ui.movie_details.MovieDetailViewModel;
+
+public class MovieInforFragment extends Fragment {
+    private FragmentMovieInforBinding mBinding;
+    private MovieDetailViewModel mViewModel;
+
+    @Nullable
     @Override
-    protected int getVaribale() {
-        return 0;
+    public View onCreateView(@NonNull LayoutInflater inflater
+            , @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mBinding = DataBindingUtil.inflate(inflater
+                , R.layout.fragment_movie_infor, container, false);
+        mBinding.setViewModel(mViewModel);
+        return mBinding.getRoot();
     }
 
-    @Override
-    protected int getLayoutResource() {
-        return 0;
+    public static MovieInforFragment getInstance() {
+        return new MovieInforFragment();
     }
 
-    @Override
-    protected BaseViewModel getViewModel() {
-        return null;
+    public MovieDetailViewModel getViewModel() {
+        return mViewModel;
+    }
+
+    public void setViewModel(MovieDetailViewModel viewModel) {
+        mViewModel = viewModel;
     }
 }

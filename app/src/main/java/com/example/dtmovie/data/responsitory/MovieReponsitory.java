@@ -1,8 +1,8 @@
 package com.example.dtmovie.data.responsitory;
 
-import com.example.dtmovie.data.reponse.GenresReponse;
 import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.data.model.MovieCategory;
+import com.example.dtmovie.data.reponse.GenresReponse;
 import com.example.dtmovie.data.reponse.MovieReponse;
 import com.example.dtmovie.data.source.MovieDataSource;
 import com.example.dtmovie.data.source.local.MovieLocalData;

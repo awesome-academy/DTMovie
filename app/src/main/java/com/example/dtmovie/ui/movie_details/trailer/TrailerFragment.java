@@ -1,22 +1,50 @@
 package com.example.dtmovie.ui.movie_details.trailer;
 
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.Fragment;
+
 import com.example.dtmovie.R;
-import com.example.dtmovie.base.BaseFragment;
-import com.example.dtmovie.base.BaseViewModel;
+import com.example.dtmovie.databinding.FragmentTrailerBinding;
+import com.example.dtmovie.ui.movie_details.MovieDetailViewModel;
 
-public class TrailerFragment extends BaseFragment {
+public class TrailerFragment extends Fragment {
+    private FragmentTrailerBinding mBinding;
+    private MovieDetailViewModel mViewModel;
+
+    @Nullable
     @Override
-    protected int getVaribale() {
-        return 0;
+    public View onCreateView(@NonNull LayoutInflater inflater
+            , @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        mBinding = DataBindingUtil.inflate(inflater,
+                R.layout.fragment_trailer, container, false);
+        mBinding.setViewModel(mViewModel);
+        return mBinding.getRoot();
     }
 
-    @Override
-    protected int getLayoutResource() {
-        return R.layout.fragment_trailer;
+    public static TrailerFragment getInstance() {
+        return new TrailerFragment();
     }
 
-    @Override
-    protected BaseViewModel getViewModel() {
-        return null;
+    public FragmentTrailerBinding getBinding() {
+        return mBinding;
+    }
+
+    public void setBinding(FragmentTrailerBinding binding) {
+        mBinding = binding;
+    }
+
+    public MovieDetailViewModel getViewModel() {
+        return mViewModel;
+    }
+
+    public void setViewModel(MovieDetailViewModel viewModel) {
+        mViewModel = viewModel;
     }
 }

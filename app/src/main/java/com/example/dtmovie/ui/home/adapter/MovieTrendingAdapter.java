@@ -1,6 +1,7 @@
 package com.example.dtmovie.ui.home.adapter;
 
 import android.content.Context;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,8 @@ public class MovieTrendingAdapter extends PagerAdapter implements View.OnClickLi
     private ItemMovieTrendingBinding mBinding;
     private MovieTrendingListener mMovieTrendingListener;
     private int mCurrent;
+    private long mLastClickTime = 0;
+    public static final int MAX_CLICK_TIME = 3000;
 
     public MovieTrendingAdapter(Context context, MovieTrendingListener movieTrendingListener) {
         mMovies = new ObservableArrayList<>();
@@ -44,7 +47,8 @@ public class MovieTrendingAdapter extends PagerAdapter implements View.OnClickLi
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        mBinding = DataBindingUtil.inflate(mLayoutInflater, R.layout.item_movie_trending, container, true);
+        mBinding = DataBindingUtil.inflate(mLayoutInflater
+                , R.layout.item_movie_trending, container, true);
         if (mBinding.getViewModel() == null) {
             mBinding.setViewModel(new ItemTrendingMovieViewModel());
         }
@@ -73,6 +77,10 @@ public class MovieTrendingAdapter extends PagerAdapter implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
+        if (SystemClock.elapsedRealtime() - mLastClickTime < MAX_CLICK_TIME) {
+            return;
+        }
+        mLastClickTime = SystemClock.elapsedRealtime();
         mMovieTrendingListener.onMovieTrendingListener(mBinding.getViewModel().getMovie());
     }
 }

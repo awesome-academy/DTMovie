@@ -4,13 +4,16 @@
     <data>
 
         <variable
-            name="ViewModel"
-            type="com.example.dtmovie.ui.movie_details.MovieDetailActivity" />
+            name="viewModel"
+            type="com.example.dtmovie.ui.movie_details.MovieDetailViewModel" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </RelativeLayout>
 </layout>

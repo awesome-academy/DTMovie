@@ -3,9 +3,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
-            name="ViewModel"
-            type="com.example.dtmovie.ui.movie_details.MovieDetailActivity" />
+            name="viewModel"
+            type="com.example.dtmovie.ui.movie_details.MovieDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

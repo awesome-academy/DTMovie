@@ -3,6 +3,10 @@
     <string name="menu_options">Options</string>
     <string name="menu_home">Home</string>
     <string name="menu_favortive">Favortive</string>
-    <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="appbar_scrolling_view_behavior"
+        translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="text_genres">Genres</string>
+    <string name="text_overview">OverView</string>
+    <string name="label_minutes"><p> mins</p></string>
+    <string name="more"># </string>
 </resources>

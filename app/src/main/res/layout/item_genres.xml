@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,15 +9,27 @@
             type="com.example.dtmovie.ui.home.ItemGenresViewModel" />
     </data>
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/x4dp">
+        android:layout_marginLeft="@dimen/x6dp"
+        android:layout_marginTop="@dimen/x6dp"
+        android:background="@color/color_tea"
+        app:cardCornerRadius="@dimen/x8dp"
+        app:cardMaxElevation="@dimen/x8dp">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:lines="1"
-            android:text="@{viewModel.mGenres.genresName}" />
-    </RelativeLayout>
+            android:layout_margin="@dimen/x4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:text="@{@string/more+viewModel.mGenres.genresName}"
+                android:textColor="@color/color_white" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
 </layout>

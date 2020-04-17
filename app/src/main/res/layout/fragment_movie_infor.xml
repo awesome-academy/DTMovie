@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,7 +14,209 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/color_white_smoke">
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_movie"
+            setCircleImage="@{viewModel.mMovies.posterPath}"
+            android:layout_width="@dimen/x100dp"
+            android:layout_height="@dimen/x100dp"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guide_line1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <View
+            android:id="@+id/view_infor"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:layout_marginTop="@dimen/x8dp"
+            android:layout_marginEnd="@dimen/x8dp"
+            android:layout_marginRight="@dimen/x8dp"
+            android:layout_marginBottom="@dimen/x8dp"
+            android:background="@drawable/view_background"
+            app:layout_constraintBottom_toTopOf="@+id/guide_line1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/image_movie"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/x1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="116dp" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:layout_marginTop="@dimen/x16dp"
+            android:layout_marginEnd="@dimen/x8dp"
+            android:layout_marginRight="@dimen/x8dp"
+            android:text="@{viewModel.mMovies.title}"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/sp_16"
+            android:textStyle="bold|normal"
+            app:layout_constraintEnd_toEndOf="@+id/view_infor"
+            app:layout_constraintHorizontal_bias="0.253"
+            app:layout_constraintStart_toStartOf="@+id/view_infor"
+            app:layout_constraintTop_toTopOf="@+id/view_infor" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:layout_marginTop="@dimen/x4dp"
+            android:numStars="10"
+            android:rating="@{(float) viewModel.mMovies.voteAverAge}"
+            android:theme="@style/RatingBar"
+            app:layout_constraintStart_toStartOf="@+id/view_infor"
+            app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+        <TextView
+            android:id="@+id/text_vote"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x4dp"
+            android:layout_marginLeft="@dimen/x4dp"
+            android:layout_marginTop="@dimen/x2dp"
+            android:text="@{String.valueOf(viewModel.mMovies.voteAverAge)}"
+            android:textColor="@color/color_black"
+            app:layout_constraintStart_toEndOf="@+id/ratingBar"
+            app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+        <ImageView
+            android:id="@+id/image_favorive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x2dp"
+            android:layout_marginEnd="@dimen/x8dp"
+            android:layout_marginRight="@dimen/x8dp"
+            android:src="@drawable/ic_favorite_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/view_infor"
+            app:layout_constraintTop_toBottomOf="@+id/text_title" />
+
+        <View
+            android:id="@+id/view_overview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:layout_marginEnd="@dimen/x8dp"
+            android:layout_marginRight="@dimen/x8dp"
+            android:background="@drawable/view_background"
+            app:layout_constraintBottom_toBottomOf="@id/text_overview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guide_line1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/text_overview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x10dp"
+            android:layout_marginLeft="@dimen/x10dp"
+            android:layout_marginTop="@dimen/x8dp"
+            android:text="@string/text_overview"
+            android:textColor="@color/color_tea"
+            android:textSize="@dimen/sp_20"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/view_overview"
+            app:layout_constraintTop_toTopOf="@+id/view_overview"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/text_overview"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:layout_marginTop="@dimen/x8dp"
+            android:layout_marginEnd="@dimen/x8dp"
+            android:layout_marginRight="@dimen/x8dp"
+            android:layout_marginBottom="@dimen/x8dp"
+            android:text="@{viewModel.mMovies.overView}"
+            android:textColor="@color/color_black"
+            app:layout_constraintBottom_toBottomOf="@+id/view_overview"
+            app:layout_constraintEnd_toEndOf="@+id/view_overview"
+            app:layout_constraintStart_toStartOf="@+id/view_overview"
+            app:layout_constraintTop_toBottomOf="@+id/text_overview_title" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_genres"
+            bindGenres="@{viewModel.mMovies.genres}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:layout_marginTop="@dimen/x8dp"
+            android:background="@drawable/view_background"
+            android:orientation="horizontal"
+            android:padding="@dimen/x4dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_overview" />
+
+        <TextView
+            android:id="@+id/text_runtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:layout_marginTop="@dimen/x8dp"
+            android:text="@{viewModel.mMovies.runtime+@string/label_minutes}"
+            android:textColor="@color/color_black"
+            app:layout_constraintStart_toStartOf="@+id/view_infor"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+        <TextView
+            android:id="@+id/text_release_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/x8dp"
+            android:layout_marginLeft="@dimen/x8dp"
+            android:layout_marginTop="@dimen/x8dp"
+            android:text="@{viewModel.mMovies.releaseData}"
+            android:textColor="@color/color_black"
+            app:layout_constraintStart_toEndOf="@+id/text_runtime"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+        <TextView
+            android:id="@+id/text_popularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/x8dp"
+            android:layout_marginEnd="@dimen/x8dp"
+            android:layout_marginRight="@dimen/x8dp"
+            android:drawableLeft="@drawable/ic_visibility_black_24dp"
+            android:text="@{viewModel.mMovies.popularity}"
+            android:textColor="@color/color_black"
+            app:layout_constraintEnd_toEndOf="@+id/view_infor"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

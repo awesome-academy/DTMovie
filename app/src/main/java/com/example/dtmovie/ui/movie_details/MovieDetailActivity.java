@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dtmovie.R;
+import com.example.dtmovie.constant.IntViewPager;
 import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.databinding.ActivityDetailBinding;
 import com.example.dtmovie.ui.movie_details.cast.CastMovieFragment;
@@ -46,6 +47,7 @@ public class MovieDetailActivity extends AppCompatActivity {
         initMovieCast();
         initMovieProducer();
         mBinding.viewPager.setAdapter(mMoviePagerAdapter);
+        mBinding.viewPager.setOffscreenPageLimit(IntViewPager.SET_OFF_SCREEN_LIMIT);
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
     }
 

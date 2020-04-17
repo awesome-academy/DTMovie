@@ -34,6 +34,12 @@ public class Movie implements Serializable {
     @SerializedName("overview")
     private String mOverView;
 
+    @SerializedName("popularity")
+    private String mPopularity;
+
+    @SerializedName("runtime")
+    private String mRuntime;
+
     @SerializedName("release_date")
     private String mReleaseData;
 
@@ -50,9 +56,11 @@ public class Movie implements Serializable {
     }
 
     public Movie(int id, String backdropPath, String posterPath,
-                 List<Genres> genres, String title, List<Company> productionCompanies,
-                 double voteAverAge, String overView, String releaseData,
-                 CastResult castResult, VideoResult videoResult, SimilarResult similarResult) {
+                 List<Genres> genres, String title,
+                 List<Company> productionCompanies, double voteAverAge,
+                 String overView, String popularity, String runtime,
+                 String releaseData, CastResult castResult,
+                 VideoResult videoResult, SimilarResult similarResult) {
         mId = id;
         mBackdropPath = backdropPath;
         mPosterPath = posterPath;
@@ -61,6 +69,8 @@ public class Movie implements Serializable {
         mProductionCompanies = productionCompanies;
         mVoteAverAge = voteAverAge;
         mOverView = overView;
+        mPopularity = popularity;
+        mRuntime = runtime;
         mReleaseData = releaseData;
         mCastResult = castResult;
         mVideoResult = videoResult;
@@ -161,5 +171,21 @@ public class Movie implements Serializable {
 
     public void setSimilarResult(SimilarResult similarResult) {
         mSimilarResult = similarResult;
+    }
+
+    public String getPopularity() {
+        return mPopularity;
+    }
+
+    public void setPopularity(String popularity) {
+        mPopularity = popularity;
+    }
+
+    public String getRuntime() {
+        return mRuntime;
+    }
+
+    public void setRuntime(String runtime) {
+        mRuntime = runtime;
     }
 }

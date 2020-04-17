@@ -16,4 +16,6 @@
     <dimen name="x12sp">12sp</dimen>
     <dimen name="x170dp">170dp</dimen>
     <dimen name="x6dp">6dp</dimen>
+    <dimen name="x100dp">100dp</dimen>
+    <dimen name="x16dp">16dp</dimen>
 </resources>

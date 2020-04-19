@@ -99,9 +99,9 @@ public class HomeFragment extends BaseFragment implements MovieTrendingListener 
         mBinding.recyclerCategory.hasFixedSize();
 
         mGenresAdapter = new GenresAdapter(getContext());
+        mBinding.recyclerCategory.setNestedScrollingEnabled(false);
         mBinding.recyclerGenres.setAdapter(mGenresAdapter);
         mBinding.recyclerGenres.hasFixedSize();
-        mBinding.recyclerCategory.setNestedScrollingEnabled(false);
     }
 
     private void initTimerChangerSlide() {

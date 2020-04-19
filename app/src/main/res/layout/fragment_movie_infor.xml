@@ -68,9 +68,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/x8dp"
             android:layout_marginLeft="@dimen/x8dp"
-            android:layout_marginTop="@dimen/x16dp"
+            android:layout_marginTop="@dimen/x12dp"
             android:layout_marginEnd="@dimen/x8dp"
             android:layout_marginRight="@dimen/x8dp"
+            android:lines="1"
             android:text="@{viewModel.mMovies.title}"
             android:textColor="@color/color_black"
             android:textSize="@dimen/sp_16"
@@ -167,7 +168,6 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_genres"
-            bindGenres="@{viewModel.mMovies.genres}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/x8dp"

@@ -11,13 +11,13 @@
 
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/x4dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="@dimen/x120dp"
             android:layout_height="@dimen/x170dp"
-            android:layout_marginRight="@dimen/x6dp"
             app:cardCornerRadius="@dimen/x6dp"
             app:cardElevation="@dimen/x6dp">
 
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/card_view"
             android:gravity="center"
-            android:lines="2"
+            android:lines="1"
             android:text="@{viewModel.mMovies.title}"
             android:textSize="@dimen/x12sp" />
     </RelativeLayout>

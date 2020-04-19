@@ -2,8 +2,10 @@ package com.example.dtmovie.ui.movie_details;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -14,24 +16,28 @@ import com.example.dtmovie.R;
 import com.example.dtmovie.constant.IntViewPager;
 import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.databinding.ActivityDetailBinding;
+import com.example.dtmovie.ui.main.MainActivity;
 import com.example.dtmovie.ui.movie_details.cast.CastMovieFragment;
 import com.example.dtmovie.ui.movie_details.infor.MovieInforFragment;
 import com.example.dtmovie.ui.movie_details.producer.ProducerFragment;
 import com.example.dtmovie.ui.movie_details.similar.SimilarFragment;
 import com.example.dtmovie.ui.movie_details.trailer.TrailerFragment;
 
-public class MovieDetailActivity extends AppCompatActivity {
+public class MovieDetailActivity extends AppCompatActivity implements OnTrailerListener {
     private static final String EXTRA_MOVIE_DETAIL = "extra_movie_detail";
     public static final String EXTRA_MOVIE = "extra_movie";
     private MovieDetailViewModel mViewModel;
     private ActivityDetailBinding mBinding;
     private MoviePagerAdapter mMoviePagerAdapter;
     private Movie mMovie;
+    private YoutubeFragment mYoutubeFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
+        mYoutubeFragment = (YoutubeFragment) getFragmentManager()
+                .findFragmentById(R.id.fragment_youtube);
         initData();
         initViewModel();
         initActionBar();
@@ -73,6 +79,7 @@ public class MovieDetailActivity extends AppCompatActivity {
     private void initMovieTrailer() {
         TrailerFragment trailerFragment = TrailerFragment.getInstance();
         trailerFragment.setViewModel(mViewModel);
+        trailerFragment.setListener(this);
         mMoviePagerAdapter.addFragment(trailerFragment);
     }
 
@@ -85,14 +92,21 @@ public class MovieDetailActivity extends AppCompatActivity {
     private void initViewModel() {
         mViewModel = ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())
                 .create(MovieDetailViewModel.class);
-        mViewModel.initViewModel(this, mMovie);
+        mViewModel.initViewModel(this, mMovie, this);
     }
 
     private void initActionBar() {
         setSupportActionBar(mBinding.toolbar);
         getSupportActionBar().setTitle(mMovie.getTitle());
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
-        mBinding.toolbar.setNavigationOnClickListener(v -> onBackPressed());
+        mBinding.toolbar.setNavigationOnClickListener(v -> {
+            Intent intent = MainActivity.getIntent(getApplicationContext());
+            intent.addFlags(Intent.
+                            FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
+                }
+        );
     }
 
     private void initData() {
@@ -112,5 +126,22 @@ public class MovieDetailActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         mViewModel.destroy();
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mYoutubeFragment.setFullScreen(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE);
+    }
+
+    @Override
+    public void onCreateTrailer(String mTrailerKey) {
+        mYoutubeFragment.setTrailerId(mTrailerKey);
+    }
+
+    @Override
+    public void onPlayTrailer(String mTrailerKey) {
+        mYoutubeFragment.setTrailerId(mTrailerKey);
+        mYoutubeFragment.playTrailer();
     }
 }

@@ -1,4 +1,4 @@
-package com.example.dtmovie.ui.home.adapter;
+package com.example.dtmovie.ui.movie_details.infor;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,39 +6,27 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.ObservableArrayList;
-import androidx.databinding.ObservableList;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dtmovie.R;
 import com.example.dtmovie.data.model.Genres;
-import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.databinding.ItemGenresBinding;
 import com.example.dtmovie.ui.home.ItemGenresViewModel;
 
 import java.util.List;
 
-public class GenresAdapter extends RecyclerView.Adapter<GenresAdapter.ViewHolder> {
-   private ObservableList<Genres> mGenres;
-/*
+public class MovieGenresAdapter extends RecyclerView.Adapter<MovieGenresAdapter.ViewHolder> {
     private List<Genres> mGenres;
-*/
     private LayoutInflater mLayoutInflater;
     private Context mContext;
 
-    public GenresAdapter(Context context, ObservableList<Genres> genres) {
+    public MovieGenresAdapter(Context context, List<Genres> genres) {
         mContext = context;
         mLayoutInflater = LayoutInflater.from(context);
-        mGenres = new ObservableArrayList<>();
     }
 
-   /* public void setGenres(List<Genres> genres) {
+    public void setGenres(List<Genres> genres) {
         mGenres = genres;
-    }*/
-
-    public void update(List<Genres> genres) {
-        mGenres.clear();
-        mGenres.addAll(genres);
         notifyDataSetChanged();
     }
 

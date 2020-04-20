@@ -11,23 +11,23 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.example.dtmovie.R;
-import com.example.dtmovie.databinding.FragmentTrailerBinding;
-import com.example.dtmovie.ui.home.adapter.MovieAdapter;
+import com.example.dtmovie.databinding.FragmentMovieTrailerBinding;
 import com.example.dtmovie.ui.movie_details.MovieDetailViewModel;
 import com.example.dtmovie.ui.movie_details.OnTrailerListener;
 
 import java.util.ArrayList;
 
 public class TrailerFragment extends Fragment {
-    private FragmentTrailerBinding mBinding;
+    private FragmentMovieTrailerBinding mBinding;
     private MovieDetailViewModel mViewModel;
     private OnTrailerListener mListener;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater
             , @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil.inflate(inflater,
-                R.layout.fragment_trailer, container, false);
+                R.layout.fragment_movie_trailer, container, false);
         mBinding.setViewModel(mViewModel);
         initRecyclerMovieTrailer();
         return mBinding.getRoot();
@@ -35,18 +35,18 @@ public class TrailerFragment extends Fragment {
 
     private void initRecyclerMovieTrailer() {
         mBinding.recyclerTrailer.setAdapter(new MoiveTrailerAdapter(new ArrayList<>(),
-                getContext(),mListener));
+                getContext(), mListener));
     }
 
     public static TrailerFragment getInstance() {
         return new TrailerFragment();
     }
 
-    public FragmentTrailerBinding getBinding() {
+    public FragmentMovieTrailerBinding getBinding() {
         return mBinding;
     }
 
-    public void setBinding(FragmentTrailerBinding binding) {
+    public void setBinding(FragmentMovieTrailerBinding binding) {
         mBinding = binding;
     }
 

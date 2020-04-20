@@ -17,9 +17,9 @@ import com.example.dtmovie.constant.IntViewPager;
 import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.databinding.ActivityDetailBinding;
 import com.example.dtmovie.ui.main.MainActivity;
-import com.example.dtmovie.ui.movie_details.cast.CastMovieFragment;
+import com.example.dtmovie.ui.movie_details.cast.MovieCastFragment;
 import com.example.dtmovie.ui.movie_details.infor.MovieInforFragment;
-import com.example.dtmovie.ui.movie_details.producer.ProducerFragment;
+import com.example.dtmovie.ui.movie_details.producer.MovieProducerFragment;
 import com.example.dtmovie.ui.movie_details.similar.SimilarFragment;
 import com.example.dtmovie.ui.movie_details.trailer.TrailerFragment;
 
@@ -58,15 +58,15 @@ public class MovieDetailActivity extends AppCompatActivity implements OnTrailerL
     }
 
     private void initMovieProducer() {
-        ProducerFragment producerFragment = ProducerFragment.getInstance();
-        producerFragment.setViewModel(mViewModel);
-        mMoviePagerAdapter.addFragment(producerFragment);
+        MovieProducerFragment movieProducerFragment = MovieProducerFragment.getInstance();
+        movieProducerFragment.setViewModel(mViewModel);
+        mMoviePagerAdapter.addFragment(movieProducerFragment);
     }
 
     private void initMovieCast() {
-        CastMovieFragment castMovieFragment = CastMovieFragment.getInstance();
-        castMovieFragment.setViewModel(mViewModel);
-        mMoviePagerAdapter.addFragment(castMovieFragment);
+        MovieCastFragment movieCastFragment = MovieCastFragment.getInstance();
+        movieCastFragment.setViewModel(mViewModel);
+        mMoviePagerAdapter.addFragment(movieCastFragment);
 
     }
 

@@ -12,14 +12,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.dtmovie.R;
 import com.example.dtmovie.data.model.Movie;
-import com.example.dtmovie.databinding.FragmentSimilarBinding;
+import com.example.dtmovie.databinding.FragmentMovieSimilarBinding;
 import com.example.dtmovie.ui.home.adapter.ItemMovieListener;
 import com.example.dtmovie.ui.home.adapter.MovieAdapter;
 import com.example.dtmovie.ui.movie_details.MovieDetailActivity;
 import com.example.dtmovie.ui.movie_details.MovieDetailViewModel;
 
 public class SimilarFragment extends Fragment implements ItemMovieListener {
-    private FragmentSimilarBinding mBinding;
+    private FragmentMovieSimilarBinding mBinding;
     private MovieDetailViewModel mViewModel;
 
     @Nullable
@@ -27,7 +27,7 @@ public class SimilarFragment extends Fragment implements ItemMovieListener {
     public View onCreateView(@NonNull LayoutInflater inflater
             , @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mBinding = DataBindingUtil
-                .inflate(inflater, R.layout.fragment_similar, container, false);
+                .inflate(inflater, R.layout.fragment_movie_similar, container, false);
         mBinding.setViewModel(mViewModel);
         initRecyclerSimilar();
         return mBinding.getRoot();
@@ -43,11 +43,11 @@ public class SimilarFragment extends Fragment implements ItemMovieListener {
         return new SimilarFragment();
     }
 
-    public FragmentSimilarBinding getBinding() {
+    public FragmentMovieSimilarBinding getBinding() {
         return mBinding;
     }
 
-    public void setBinding(FragmentSimilarBinding binding) {
+    public void setBinding(FragmentMovieSimilarBinding binding) {
         mBinding = binding;
     }
 

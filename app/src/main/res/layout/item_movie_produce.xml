@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dtmovie.ui.movie_details.producer.ItemMovieProducerViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x4dp"
+        android:layout_marginTop="@dimen/x4dp"
+        android:layout_marginRight="@dimen/x4dp"
+        android:layout_marginBottom="@dimen/x4dp"
+        android:background="@color/color_white_smoke"
+        app:cardCornerRadius="@dimen/x8dp"
+        app:cardMaxElevation="@dimen/x8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/image_produce"
+                setImage300="@{viewModel.mCompanys.logoPath}"
+                android:layout_width="0dp"
+                android:layout_height="140dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="@dimen/x100dp"
+                android:src="@drawable/bg_shadow"
+                app:layout_constraintBottom_toBottomOf="@id/image_produce"
+                app:layout_constraintLeft_toLeftOf="@id/image_produce"
+                app:layout_constraintRight_toRightOf="@id/image_produce" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/x8dp"
+                android:gravity="center"
+                android:lines="1"
+                android:text="@{viewModel.mCompanys.name}"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/sp_16"
+                app:layout_constraintBottom_toBottomOf="@+id/image_produce"
+                app:layout_constraintLeft_toLeftOf="@+id/image_produce"
+                app:layout_constraintRight_toRightOf="@id/image_produce" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -43,7 +43,7 @@
             android:gravity="center"
             android:lines="1"
             android:text="@{viewModel.mMovies.title}"
-            android:textSize="@dimen/x12sp" />
+            android:textSize="@dimen/sp_12" />
     </RelativeLayout>
 
 </layout>

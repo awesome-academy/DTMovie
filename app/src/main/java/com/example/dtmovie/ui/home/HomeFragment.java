@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.databinding.ObservableArrayList;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dtmovie.R;
@@ -24,6 +25,7 @@ import com.example.dtmovie.ui.home.adapter.MovieTrendingListener;
 import com.example.dtmovie.ui.movie_details.MovieDetailActivity;
 import com.google.android.material.appbar.AppBarLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
@@ -98,7 +100,7 @@ public class HomeFragment extends BaseFragment implements MovieTrendingListener 
         mBinding.recyclerCategory.setAdapter(mCategoryAdapter);
         mBinding.recyclerCategory.hasFixedSize();
 
-        mGenresAdapter = new GenresAdapter(getContext());
+        mGenresAdapter = new GenresAdapter(getContext(),new ObservableArrayList<>());
         mBinding.recyclerCategory.setNestedScrollingEnabled(false);
         mBinding.recyclerGenres.setAdapter(mGenresAdapter);
         mBinding.recyclerGenres.hasFixedSize();

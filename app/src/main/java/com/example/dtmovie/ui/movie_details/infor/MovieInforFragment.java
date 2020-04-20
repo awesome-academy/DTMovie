@@ -8,12 +8,15 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
+import androidx.databinding.ObservableArrayList;
 import androidx.fragment.app.Fragment;
 
 import com.example.dtmovie.R;
 import com.example.dtmovie.databinding.FragmentMovieInforBinding;
 import com.example.dtmovie.ui.home.adapter.GenresAdapter;
 import com.example.dtmovie.ui.movie_details.MovieDetailViewModel;
+
+import java.util.ArrayList;
 
 public class MovieInforFragment extends Fragment {
     private FragmentMovieInforBinding mBinding;
@@ -31,7 +34,7 @@ public class MovieInforFragment extends Fragment {
     }
 
     private void initRecyclerGenres() {
-        mBinding.recyclerGenres.setAdapter(new GenresAdapter(getContext()));
+        mBinding.recyclerGenres.setAdapter(new MovieGenresAdapter(getContext(),new ArrayList<>()));
     }
 
     public static MovieInforFragment getInstance() {

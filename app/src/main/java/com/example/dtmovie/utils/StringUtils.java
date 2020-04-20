@@ -17,6 +17,10 @@ public class StringUtils {
         return String.format("%s%s%s", Constant.BASE_IMAGE_PATH, Constant.IMAGE_SIZE_W300, image_path);
     }
 
+    public static String getImage200Url(String image_path) {
+        return String.format("%s%s%s", Constant.BASE_IMAGE_PATH, Constant.IMAGE_SIZE_W200, image_path);
+    }
+
     public static String getThumYoutube(String key) {
         return String.format(Constant.BASE_THUMBNAIL_PATH, key);
     }

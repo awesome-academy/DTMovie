@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.dtmovie.R;
@@ -100,13 +101,19 @@ public class MovieDetailActivity extends AppCompatActivity implements OnTrailerL
         getSupportActionBar().setTitle(mMovie.getTitle());
         mBinding.toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
         mBinding.toolbar.setNavigationOnClickListener(v -> {
-            Intent intent = MainActivity.getIntent(getApplicationContext());
-            intent.addFlags(Intent.
+                    Intent intent = MainActivity.getIntent(getApplicationContext());
+                    intent.addFlags(Intent.
                             FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
+                    startActivity(intent);
+                    finish();
                 }
         );
+        mViewModel.getMoviebyId(mMovie.getId()).observe(this, new Observer<Movie>() {
+            @Override
+            public void onChanged(Movie movie) {
+                mViewModel.isFavorite.set(movie != null);
+            }
+        });
     }
 
     private void initData() {

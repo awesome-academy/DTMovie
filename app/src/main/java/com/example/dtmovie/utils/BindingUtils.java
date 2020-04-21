@@ -34,19 +34,21 @@ public class BindingUtils {
     @BindingAdapter("setImage")
     public static void setImage(ImageView imageView, String url) {
         Glide.with(imageView.getContext())
-                .load(StringUtils.getImageUrl(url)).centerCrop().fallback(R.drawable.unnamed)
+                .load(StringUtils.getImageUrl(url)).centerCrop().fallback(R.drawable.unnamed).
+                thumbnail(Glide.with(imageView).load(R.drawable.unnamed))
                 .error(R.drawable.unnamed)
                 .into(imageView);
     }
 
     @BindingAdapter("setImage300")
     public static void setImage300(ImageView imageView, String url) {
-        Glide.with(imageView.getContext()).load(StringUtils.getImage300Url(url)).centerCrop()
-                .fallback(R.drawable.unnamed).error(R.drawable.unnamed).into(imageView);
+        Glide.with(imageView.getContext()).load(StringUtils.getImage300Url(url)).centerCrop().
+                thumbnail(Glide.with(imageView).load(R.drawable.unnamed))
+                .error(R.drawable.unnamed).into(imageView);
     }
 
     @BindingAdapter("bindImageW200")
-    public static void bindImageW200(ImageView imageView,String url){
+    public static void bindImageW200(ImageView imageView, String url) {
         Glide.with(imageView.getContext()).load(StringUtils.getImage200Url(url)).
                 thumbnail(Glide.with(imageView).load(R.drawable.unnamed)).
                 placeholder(R.drawable.unnamed).centerCrop().into(imageView);
@@ -55,7 +57,8 @@ public class BindingUtils {
     @BindingAdapter("setCircleImage")
     public static void setCircleImage(ImageView imageView, String url) {
         Glide.with(imageView.getContext())
-                .load(StringUtils.getImageUrl(url)).centerCrop()
+                .load(StringUtils.getImageUrl(url)).centerCrop().thumbnail(Glide.with(imageView)
+                .load(R.drawable.unnamed))
                 .fallback(R.drawable.unnamed)
                 .apply(RequestOptions.circleCropTransform())
                 .placeholder(R.drawable.unnamed)
@@ -101,7 +104,7 @@ public class BindingUtils {
     @BindingAdapter("bindProduce")
     public static void bindProduce(RecyclerView recyclerView, List<Company> companies) {
         MovieProduceAdapter adapter = (MovieProduceAdapter) recyclerView.getAdapter();
-        if (adapter != null){
+        if (adapter != null) {
             adapter.setCompanies(companies);
         }
     }

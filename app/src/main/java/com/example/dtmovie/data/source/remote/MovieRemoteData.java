@@ -42,7 +42,12 @@ public class MovieRemoteData implements MovieDataSource.Remote {
     }
 
     @Override
-    public Observable<Movie> getMovieDetail(int id) {
-        return mApi.getMovieDetail(id);
+    public Observable<Movie> getDetailMovie(int id) {
+        return mApi.getDetailMovie(id);
+    }
+
+    @Override
+    public Observable<MovieReponse> getSearchMovie(String key, String query) {
+        return mApi.getSearchMovie(key,query);
     }
 }

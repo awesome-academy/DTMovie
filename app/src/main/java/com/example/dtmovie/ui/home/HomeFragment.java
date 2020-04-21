@@ -2,13 +2,10 @@ package com.example.dtmovie.ui.home;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.ObservableArrayList;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -25,7 +22,6 @@ import com.example.dtmovie.ui.home.adapter.MovieTrendingListener;
 import com.example.dtmovie.ui.movie_details.MovieDetailActivity;
 import com.google.android.material.appbar.AppBarLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
@@ -49,20 +45,6 @@ public class HomeFragment extends BaseFragment implements MovieTrendingListener 
         mBinding = (FragmentHomeBinding) getViewDataBinding();
         setAdapter();
         hindeSlide();
-        initToolbar();
-    }
-
-    private void initToolbar() {
-        mBinding.toolbar.inflateMenu(R.menu.menu_tool_bar);
-        mBinding.toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.menu_search) {
-                    Toast.makeText(getContext(), "Search", Toast.LENGTH_SHORT).show();
-                }
-                return false;
-            }
-        });
     }
 
     private void hindeSlide() {
@@ -100,7 +82,7 @@ public class HomeFragment extends BaseFragment implements MovieTrendingListener 
         mBinding.recyclerCategory.setAdapter(mCategoryAdapter);
         mBinding.recyclerCategory.hasFixedSize();
 
-        mGenresAdapter = new GenresAdapter(getContext(),new ObservableArrayList<>());
+        mGenresAdapter = new GenresAdapter(getContext(), new ObservableArrayList<>());
         mBinding.recyclerCategory.setNestedScrollingEnabled(false);
         mBinding.recyclerGenres.setAdapter(mGenresAdapter);
         mBinding.recyclerGenres.hasFixedSize();

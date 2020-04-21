@@ -1,8 +1,10 @@
 package com.example.dtmovie.data.source;
 
-import com.example.dtmovie.data.reponse.GenresReponse;
+import androidx.lifecycle.LiveData;
+
 import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.data.model.MovieCategory;
+import com.example.dtmovie.data.reponse.GenresReponse;
 import com.example.dtmovie.data.reponse.MovieReponse;
 
 import java.util.List;
@@ -17,10 +19,22 @@ public interface MovieDataSource {
 
         Observable<GenresReponse> getMovieGenres();
 
-        Observable<Movie> getMovieDetail(int id);
+        Observable<Movie> getDetailMovie(int id);
+
+        Observable<MovieReponse> getSearchMovie(String key, String query);
     }
 
     interface Local {
         List<MovieCategory> getCategories();
+
+        LiveData<List<Movie>> getAllMovies();
+
+        LiveData<Movie> getMovieById(int movieId);
+
+        void addFavoriteMovie(Movie movie);
+
+        void deleteFavoriteMovie(Movie movie);
+
+        boolean isFavorite(int movieId);
     }
 }

@@ -26,9 +26,9 @@
 
             <ImageView
                 android:id="@+id/image_produce"
-                setImage300="@{viewModel.mCompanys.logoPath}"
+                bindImageW200="@{viewModel.mCompanys.logoPath}"
                 android:layout_width="0dp"
-                android:layout_height="140dp"
+                android:layout_height="@dimen/x140dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"

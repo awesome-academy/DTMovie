@@ -43,14 +43,14 @@
                     app:tabBackground="@drawable/selector_indicator"
                     app:tabIndicatorHeight="0dp" />
 
-
                 <androidx.appcompat.widget.Toolbar
+                    app:subtitleTextColor="@color/color_white"
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?android:actionBarSize"
                     app:layout_collapseMode="pin"
                     app:title="@string/app_name"
-                    app:titleTextColor="@android:color/holo_orange_dark" />
+                    app:titleTextColor="@android:color/white" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 

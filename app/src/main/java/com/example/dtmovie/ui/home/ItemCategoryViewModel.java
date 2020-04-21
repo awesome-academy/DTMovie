@@ -38,7 +38,7 @@ public class ItemCategoryViewModel extends BaseViewModel {
         mContext = context;
         mDisposable = new CompositeDisposable();
         mReponsitory = MovieReponsitory.
-                getInstance(MovieRemoteData.getInstance(context), new MovieLocalData());
+                getInstance(MovieRemoteData.getInstance(context), new MovieLocalData(context));
     }
 
     public LiveData<List<Movie>> getMovie(MovieCategory category) {

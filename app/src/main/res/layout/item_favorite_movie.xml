@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.dtmovie.ui.home.ItemMovieViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_margin="@dimen/x4dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/x8dp"
+        app:cardElevation="@dimen/x8dp">
+
+        <RelativeLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                bindImageW200="@{viewModel.mMovies.posterPath}"
+                android:layout_width="@dimen/x130dp"
+                android:layout_height="@dimen/x150dp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</layout>

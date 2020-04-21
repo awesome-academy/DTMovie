@@ -1,5 +1,7 @@
 package com.example.dtmovie.data.responsitory;
 
+import androidx.lifecycle.LiveData;
+
 import com.example.dtmovie.data.model.Movie;
 import com.example.dtmovie.data.model.MovieCategory;
 import com.example.dtmovie.data.reponse.GenresReponse;
@@ -46,12 +48,37 @@ public class MovieReponsitory implements MovieDataSource.Remote, MovieDataSource
     }
 
     @Override
-    public Observable<Movie> getMovieDetail(int id) {
-        return mMovieRemoteData.getMovieDetail(id);
+    public Observable<Movie> getMovieDetail(int movieId) {
+        return mMovieRemoteData.getMovieDetail(movieId);
     }
 
     @Override
     public List<MovieCategory> getCategories() {
         return mMovieLocalData.getCategories();
+    }
+
+    @Override
+    public LiveData<List<Movie>> getAllMovies() {
+        return mMovieLocalData.getAllMovies();
+    }
+
+    @Override
+    public LiveData<Movie> getMovieById(int movieId) {
+        return mMovieLocalData.getMovieById(movieId);
+    }
+
+    @Override
+    public void addFavoriteMovie(Movie movie) {
+        mMovieLocalData.addFavoriteMovie(movie);
+    }
+
+    @Override
+    public void deleteFavoriteMovie(Movie movie) {
+        mMovieLocalData.deleteFavoriteMovie(movie);
+    }
+
+    @Override
+    public boolean isFavorite(int movieId) {
+        return mMovieLocalData.isFavorite(movieId);
     }
 }

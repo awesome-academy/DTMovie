@@ -1,5 +1,6 @@
 package com.example.dtmovie.ui.home;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -25,7 +26,6 @@ import com.example.dtmovie.ui.home.adapter.MovieTrendingListener;
 import com.example.dtmovie.ui.movie_details.MovieDetailActivity;
 import com.google.android.material.appbar.AppBarLayout;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Timer;
@@ -100,7 +100,7 @@ public class HomeFragment extends BaseFragment implements MovieTrendingListener 
         mBinding.recyclerCategory.setAdapter(mCategoryAdapter);
         mBinding.recyclerCategory.hasFixedSize();
 
-        mGenresAdapter = new GenresAdapter(getContext(),new ObservableArrayList<>());
+        mGenresAdapter = new GenresAdapter(getContext(), new ObservableArrayList<>());
         mBinding.recyclerCategory.setNestedScrollingEnabled(false);
         mBinding.recyclerGenres.setAdapter(mGenresAdapter);
         mBinding.recyclerGenres.hasFixedSize();

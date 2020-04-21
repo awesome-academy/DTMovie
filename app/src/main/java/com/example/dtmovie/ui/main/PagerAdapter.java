@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.example.dtmovie.constant.IntViewPager;
-import com.example.dtmovie.ui.favorite.FavoriteFragment;
+import com.example.dtmovie.ui.favorite.FavoriteMovieFragment;
 import com.example.dtmovie.ui.home.HomeFragment;
 import com.example.dtmovie.ui.option.OptionsFragment;
 
@@ -30,7 +30,7 @@ public class PagerAdapter extends FragmentPagerAdapter {
             case FRAGMENT_HOME:
                 return HomeFragment.getInstance();
             case FRAGMENT_FAVORITE:
-                return FavoriteFragment.getInstance();
+                return FavoriteMovieFragment.getInstance();
             default:
                 return null;
         }

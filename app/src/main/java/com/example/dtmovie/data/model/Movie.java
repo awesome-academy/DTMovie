@@ -1,5 +1,10 @@
 package com.example.dtmovie.data.model;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
 import com.example.dtmovie.data.result.CastResult;
 import com.example.dtmovie.data.result.SimilarResult;
 import com.example.dtmovie.data.result.VideoResult;
@@ -8,47 +13,63 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 import java.util.List;
 
+@Entity(tableName = "favorite_movie")
 public class Movie implements Serializable {
 
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     @SerializedName("id")
     private int mId;
 
+    @ColumnInfo(name = "backdrop_path")
     @SerializedName("backdrop_path")
     private String mBackdropPath;
 
+    @ColumnInfo(name = "poster_path")
     @SerializedName("poster_path")
     private String mPosterPath;
 
+    @Ignore
     @SerializedName("genres")
     private List<Genres> mGenres;
 
+    @ColumnInfo(name = "title")
     @SerializedName("title")
     private String mTitle;
 
+    @Ignore
     @SerializedName("production_companies")
     private List<Company> mProductionCompanies;
 
+    @ColumnInfo(name = "vote_average")
     @SerializedName("vote_average")
     private double mVoteAverAge;
 
+    @Ignore
     @SerializedName("overview")
     private String mOverView;
 
+    @Ignore
     @SerializedName("popularity")
     private String mPopularity;
 
+    @ColumnInfo(name = "runtime")
     @SerializedName("runtime")
     private String mRuntime;
 
+    @ColumnInfo(name = "release_date")
     @SerializedName("release_date")
     private String mReleaseData;
 
+    @Ignore
     @SerializedName("credits")
     private CastResult mCastResult;
 
+    @Ignore
     @SerializedName("videos")
     private VideoResult mVideoResult;
 
+    @Ignore
     @SerializedName("similar")
     private SimilarResult mSimilarResult;
 

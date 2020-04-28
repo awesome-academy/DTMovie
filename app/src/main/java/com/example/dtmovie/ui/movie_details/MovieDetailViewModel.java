@@ -40,7 +40,7 @@ public class MovieDetailViewModel extends BaseViewModel {
     }
 
     private void load(int id) {
-        Disposable disposable = mReponsitory.getMovieDetail(id).
+        Disposable disposable = mReponsitory.getDetailMovie(id).
                 subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(movie -> {

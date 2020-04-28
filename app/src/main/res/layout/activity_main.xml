@@ -32,6 +32,7 @@
             app:itemBackground="@color/color_black1"
             app:itemIconTint="@drawable/status_navigation"
             app:itemTextColor="@drawable/status_navigation"
+            app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

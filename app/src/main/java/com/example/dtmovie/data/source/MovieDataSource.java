@@ -19,7 +19,9 @@ public interface MovieDataSource {
 
         Observable<GenresReponse> getMovieGenres();
 
-        Observable<Movie> getMovieDetail(int id);
+        Observable<Movie> getDetailMovie(int id);
+
+        Observable<MovieReponse> getSearchMovie(String key, String query);
     }
 
     interface Local {

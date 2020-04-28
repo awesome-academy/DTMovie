@@ -30,12 +30,15 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
         mLayoutInflater = LayoutInflater.from(context);
         mContext = context;
     }
-
+    public void clear(){
+        mMovies.clear();
+        notifyDataSetChanged();
+    }
     public void setListener(ItemMovieListener listener) {
         mListener = listener;
     }
 
-    public  void update(List<Movie> movies){
+    public void update(List<Movie> movies){
         mMovies.clear();
         mMovies.addAll(movies);
         notifyDataSetChanged();
@@ -44,7 +47,8 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemFavoriteMovieBinding binding = DataBindingUtil.inflate(mLayoutInflater, R.layout.item_favorite_movie, parent, false);
+        ItemFavoriteMovieBinding binding = DataBindingUtil.
+                inflate(mLayoutInflater, R.layout.item_favorite_movie, parent, false);
         return new ViewHolder(binding, mListener);
     }
 

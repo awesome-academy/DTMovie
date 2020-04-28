@@ -22,9 +22,10 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:scaleType="centerCrop"
                 bindImageW200="@{viewModel.mMovies.posterPath}"
                 android:layout_width="@dimen/x130dp"
-                android:layout_height="@dimen/x150dp" />
+                android:layout_height="@dimen/x160dp" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 

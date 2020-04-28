@@ -61,7 +61,6 @@ public class FavoriteMovieFragment extends BaseFragment implements ItemMovieList
                 getInstance(Objects.requireNonNull(getActivity()).
                         getApplication()).create(FavoriteMovieViewModel.class);
         mViewModel.initViewModel(getContext());
-
         return mViewModel;
     }
 

@@ -1,15 +1,11 @@
 package com.example.dtmovie.ui.home;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.ObservableArrayList;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -49,20 +45,6 @@ public class HomeFragment extends BaseFragment implements MovieTrendingListener 
         mBinding = (FragmentHomeBinding) getViewDataBinding();
         setAdapter();
         hindeSlide();
-        initToolbar();
-    }
-
-    private void initToolbar() {
-        mBinding.toolbar.inflateMenu(R.menu.menu_tool_bar);
-        mBinding.toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == R.id.menu_search) {
-                    Toast.makeText(getContext(), "Search", Toast.LENGTH_SHORT).show();
-                }
-                return false;
-            }
-        });
     }
 
     private void hindeSlide() {

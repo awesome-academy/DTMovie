@@ -23,4 +23,7 @@
     <dimen name="x0dp">40dp</dimen>
     <dimen name="x150dp">150dp</dimen>
     <dimen name="x130dp">130dp</dimen>
+    <dimen name="x28dp">28dp</dimen>
+    <dimen name="x160dp">160dp</dimen>
+    <dimen name="x140dp">140dp</dimen>
 </resources>

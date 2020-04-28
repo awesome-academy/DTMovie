@@ -14,7 +14,8 @@ import com.example.dtmovie.R;
 import com.example.dtmovie.constant.IntViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity implements
+        BottomNavigationView.OnNavigationItemSelectedListener, ViewPager.OnPageChangeListener {
     private ViewPager mViewPager;
     private BottomNavigationView mBottomNavigationView;
     private PagerAdapter mPagerAdapter;
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     private void initViewPager() {
-        mPagerAdapter = new PagerAdapter(getSupportFragmentManager(), PagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        mPagerAdapter = new PagerAdapter(getSupportFragmentManager(),
+                PagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mViewPager.setAdapter(mPagerAdapter);
         mViewPager.setOffscreenPageLimit(IntViewPager.SET_OFF_SCREEN_LIMIT);
         mViewPager.addOnPageChangeListener(this);
@@ -55,14 +57,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.menu_option:
-                mViewPager.setCurrentItem(IntViewPager.FRAGMENT_OPTIONS);
-                return true;
             case R.id.menu_home:
                 mViewPager.setCurrentItem(IntViewPager.FRAGMENT_HOME);
                 return true;
             case R.id.menu_favorite:
                 mViewPager.setCurrentItem(IntViewPager.FRAGMENT_FAVORITE);
+                return true;
+            case R.id.menu_search:
+                mViewPager.setCurrentItem(IntViewPager.FRAGMENT_OPTIONS);
                 return true;
             default:
                 return false;
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public void onPageSelected(int position) {
         switch (position) {
             case IntViewPager.FRAGMENT_OPTIONS:
-                mBottomNavigationView.setSelectedItemId(R.id.menu_option);
+                mBottomNavigationView.setSelectedItemId(R.id.menu_search);
                 break;
             case IntViewPager.FRAGMENT_HOME:
                 mBottomNavigationView.setSelectedItemId(R.id.menu_home);

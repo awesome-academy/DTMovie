@@ -48,8 +48,13 @@ public class MovieReponsitory implements MovieDataSource.Remote, MovieDataSource
     }
 
     @Override
-    public Observable<Movie> getMovieDetail(int movieId) {
-        return mMovieRemoteData.getMovieDetail(movieId);
+    public Observable<Movie> getDetailMovie(int movieId) {
+        return mMovieRemoteData.getDetailMovie(movieId);
+    }
+
+    @Override
+    public Observable<MovieReponse> getSearchMovie(String key, String query) {
+        return mMovieRemoteData.getSearchMovie(key, query);
     }
 
     @Override
